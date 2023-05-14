@@ -1,35 +1,27 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
-import SearchIcon from '@mui/icons-material/Search';
+import * as React from "react";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import Button from "@mui/material/Button";
+import Tooltip from "@mui/material/Tooltip";
+import AdbIcon from "@mui/icons-material/Adb";
+import SearchIcon from "@mui/icons-material/Search";
+import { Link } from "react-router-dom";
+//import { MoviesContext } from "../context/MoviesContext";
+//import { useContext } from "react";
 
-
-const pages = ['Home', 'Ultimos Lanzamientos', 'Populares'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const pages = ["Ultimos Lanzamientos", "Populares"];
 
 export default function NavBar() {
-
-
-  
-
-  
-
+ // const { settingCateg } = useContext(MoviesContext);
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
           <Typography
             variant="h6"
             noWrap
@@ -37,38 +29,42 @@ export default function NavBar() {
             href="/"
             sx={{
               mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
+              display: { xs: "none", md: "flex" },
+              fontFamily: "monospace",
               fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
+              letterSpacing: ".3rem",
+              color: "inherit",
+              textDecoration: "none",
             }}
           >
             MOVIES
           </Typography>
 
-          
-      
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+            <Link to={'/'}>
+            <Button sx={{ my: 2, color: "white", display: "block" }}>
+              Home
+            </Button >
+            </Link>
             {pages.map((page) => (
-              <Button
-                key={page}
-            
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
+              <Link key={page} to={`/category/${page}`}>
+                <Button
+                //onClick={settingCateg}
+                  key={page}
+                  sx={{ my: 2, color: "white", display: "block" }}
+                >
+                  {page}
+                </Button>
+              </Link>
             ))}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
-              <IconButton >
-              <SearchIcon/>
+              <IconButton>
+                <SearchIcon />
               </IconButton>
             </Tooltip>
-           
           </Box>
         </Toolbar>
       </Container>

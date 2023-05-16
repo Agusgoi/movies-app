@@ -1,30 +1,56 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { useState } from 'react';
+import { Button, CardActions, CardContent } from '@mui/material';
+import { useContext } from 'react';
+import { MoviesContext } from '../context/MoviesContext';
+import axios from "axios";
 
 export default function MovieDetail() {
+// https://api.themoviedb.org/3/movie/{movie_id}?api_key=<<api_key>>&language=en-US
+
+  const [movie, setMovie] = useState({});
+  const {id} = useParams()
+  //const {movies, setMovies} = useContext(MoviesContext)
+  const publicKey = "ce9e33ba2c3d3c490df6ef51c4e40050";
+  console.log (id)
+  console.log (movie.genres)
+
+  useEffect (() => {
+    axios(
+      `https://api.themoviedb.org/3/movie/${id}?api_key=${publicKey}&language=en-US`
+    )
+      .then((info) => {
+    
+       let movieSelected = info.data
+       setMovie(movieSelected)
+
+      })
+
+      .catch((error) => console.log(error));
+  }, []);
+ 
+
+
   return (
-    <Box sx={{height:'100vh', backgroundColor: 'yellow', display: "flex", flexDirection: 'column', justifyContent:'flex-end'}}>
-    <Card sx={{ width: '100wh', backgroundColor: 'pink'}}>
+    <Box sx={{height:'100vh', display: "flex", flexDirection: 'column', justifyContent:'flex-end', backgroundImage:`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}}>
+    <Card sx={{ width: '100wh', height:'30%', backgroundColor: 'pink'}}>
       <CardContent>
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          Word of the Day
-        </Typography>
+        {/* <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+          {movie.title}
+        </Typography> */}
         <Typography variant="h5" component="div">
-          HOLA
+        {movie.title}
         </Typography>
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          adjective
+          Genre:
         </Typography>
         <Typography variant="body2">
-          well meaning and kindly.
-          <br />
-          {'"a benevolent smile"'}
+          {movie.overview}
         </Typography>
       </CardContent>
       <CardActions>

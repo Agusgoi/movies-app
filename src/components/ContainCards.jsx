@@ -35,7 +35,7 @@ export default function ContainCards() {
       })
 
       .catch((error) => console.log(error));
-  }, []);
+  }, [nameCategory]);
 
   return (
     <Grid

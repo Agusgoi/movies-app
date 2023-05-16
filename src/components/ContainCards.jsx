@@ -9,13 +9,14 @@ import { MoviesContext } from "../context/MoviesContext";
 export default function ContainCards() {
   const { nameCategory } = useParams();
   const [categ, setCateg] = useState("");
-  const [moviesByCateg, setMoviesByCateg] = useState([]);
-  //const { categ } = useContext(MoviesContext)
+  const [movies, setMovies] = useState([]);
 
+  console.log(categ);
+  console.log(nameCategory);
   const publicKey = "ce9e33ba2c3d3c490df6ef51c4e40050";
 
   useEffect(() => {
-     if (nameCategory !== "Ultimos Lanzamientos") {
+    if (nameCategory === "Ultimos Lanzamientos") {
       let category = "upcoming";
       setCateg(category);
     } else {
@@ -28,25 +29,26 @@ export default function ContainCards() {
     )
       .then((info) => {
         let moviesArray = info.data.results;
-        setMoviesByCateg(moviesArray);
+        console.log(moviesArray)
+        setMovies(moviesArray);
+        console.log(movies);
       })
 
       .catch((error) => console.log(error));
-  }, [nameCategory]);
-  console.log(moviesByCateg);
+  }, []);
 
   return (
     <Grid
       container
       spacing={5}
       direction="row"
-      style={{ padding: "50px", justifyContent:'center' }}
+      style={{ padding: "50px", justifyContent: "center" }}
     >
-      {moviesByCateg &&
-        moviesByCateg.map((movie) => (
+      {movies &&
+        movies.map((movie) => (
           <Grid item key={movie.id}>
             <MovieCard
-             key={movie.id}
+              key={movie.id}
               title={movie.original_title}
               img={movie.poster_path}
               id={movie.id}

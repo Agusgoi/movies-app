@@ -11,8 +11,8 @@ export default function HomeScrollers() {
   return (
     <Grid sx={{backgroundColor: 'primary.dark'}}
     container columns={2} justifyContent='center'gap={5}>
-       <Scroll titulo={'Most Popular'} category={'popular'}/>
-       <Scroll titulo={'Top Rated'} category={'top_rated'}/>
+       <Scroll title={'Most Popular'} category={'popular'}/>
+       <Scroll title={'Top Rated'} category={'top_rated'}/>
     </Grid>
     )}
 

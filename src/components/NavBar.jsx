@@ -10,13 +10,13 @@ import Tooltip from "@mui/material/Tooltip";
 import AdbIcon from "@mui/icons-material/Adb";
 import SearchIcon from "@mui/icons-material/Search";
 import { Link } from "react-router-dom";
-//import { MoviesContext } from "../context/MoviesContext";
-//import { useContext } from "react";
+import { useContext } from "react";
+import { MoviesContext } from "../context/MoviesContext";
 
 const pages = ["Ultimos Lanzamientos", "Populares"];
 
 export default function NavBar() {
- // const { settingCateg } = useContext(MoviesContext);
+
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
@@ -26,7 +26,6 @@ export default function NavBar() {
             variant="h6"
             noWrap
             component="a"
-            href="/"
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
@@ -49,7 +48,6 @@ export default function NavBar() {
             {pages.map((page) => (
               <Link key={page} to={`/category/${page}`}>
                 <Button
-                //onClick={settingCateg}
                   key={page}
                   sx={{ my: 2, color: "white", display: "block" }}
                 >

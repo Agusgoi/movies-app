@@ -7,16 +7,16 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Link } from "react-router-dom";
 
-export default function MovieCard({ img,id}) {
+export default function MovieDetailContainer({ img,id}) {
   
   return (
     <Link to={`/detail/${id}`}>
-    <Card sx={{ minWidth: 300 }}>
+    <Card sx={{ maxHeight: 300, maxWidth: 200 }}>
       <CardMedia
         component="img"
         alt=""
-        height="500"
-        image={`https://image.tmdb.org/t/p/w500/${img}`}
+        height="300"
+        image={`https://image.tmdb.org/t/p/w300/${img}`}
     
       />
      

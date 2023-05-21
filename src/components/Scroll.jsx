@@ -17,12 +17,11 @@ import { Link } from "react-router-dom";
 
 export default function Scroll({ title, category }) {
   const publicKey = "ce9e33ba2c3d3c490df6ef51c4e40050";
-  const { movies, setMovies } = useContext(MoviesContext);
 
-  //const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    console.log(category);
+  
     axios(
       `https://api.themoviedb.org/3/movie/${category}?api_key=${publicKey}&language=en-US&page=1`
     )
@@ -34,23 +33,32 @@ export default function Scroll({ title, category }) {
       .catch((error) => console.log(error));
   }, []);
 
+ // console.log(movies);
+
   return (
-    <Box sx={{ height: 450, width: 650, overflowY: "scroll" }}>
+    <Box sx={{ width: "100%", overflowY: "scroll" }}>
       <ListSubheader component="div">{title}</ListSubheader>
-      <ImageList>
-        {movies &&
-          movies.map((item) => (
-            <ImageListItem key={item.title}>
+      <ImageList sx={{ overflowX: "auto" }} rowHeight={200}>
+        <ImageListItem sx={{ display: "flex", flexDirection: "row" }}>
+          {movies.map((movie) => {
+            return (
+              <ImageListItem sx={{ display: "flex", flexDirection: "column" }}>
               <ScrollMovieCards
-                sx={{ height: 100, width: 20 }}
-                key={item.id}
-                title={item.title}
-                img={item.poster_path}
-                id={item.id}
-              />
-            </ImageListItem>
-          ))}
+                  sx={{ height: 150 }}
+                  key={movie.id}
+                  title={movie.title}
+                  img={movie.poster_path}
+                  id={movie.id}
+                />
+          </ImageListItem>
+            );
+          })}
+       
+          </ImageListItem>
+     
       </ImageList>
+     
+       
     </Box>
   );
 }
@@ -75,3 +83,40 @@ export default function Scroll({ title, category }) {
                 />
               </Link> */
 }
+
+{
+  /* <ImageList sx={{ overflowX: 'auto' }} rowHeight={200}>
+          <ImageListItem sx={{display: 'flex', flexDirection: 'row'}}>
+            {state.posts[i].images.map(image => {
+              return (
+              <img
+              src={image}
+              srcSet={image}
+              alt='title'
+              loading='lazy'
+              style={{paddingRight: '1em'}}
+              />
+              )
+            })}
+          </ImageListItem>
+        </ImageList> */
+}
+
+/* 
+        <Box sx={{ height: 450, width: 650, overflowY: "scroll" }}>
+        <ListSubheader component="div">{title}</ListSubheader>
+        <ImageList>
+          {movies &&
+            movies.map((item) => (
+              <ImageListItem key={item.title}>
+                <ScrollMovieCards
+                  sx={{ height: 100, width: 20 }}
+                  key={item.id}
+                  title={item.title}
+                  img={item.poster_path}
+                  id={item.id}
+                />
+              </ImageListItem>
+            ))}
+        </ImageList>
+      </Box> */

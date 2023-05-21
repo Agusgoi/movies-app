@@ -9,12 +9,15 @@ export default function ScrollMovieCards({ id, title, img }) {
     <>
       <img
         src={`https://image.tmdb.org/t/p/w300/${img}`}
-        alt={title}
+        key={id}
+        alt="title"
         loading="lazy"
+        height="200"
+        
       />
       <Link to={`/detail/${id}`}>
-        <ImageListItemBar
-          title={title}
+        <ImageListItemBar position="below"  sx={{ backgroundColor: 'green' }}
+    title={title}
           actionIcon={
             <IconButton
               sx={{ color: "rgba(255, 255, 255, 0.54)" }}

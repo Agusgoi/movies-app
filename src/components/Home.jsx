@@ -1,11 +1,12 @@
 import CarrouselContainer from './Carrouselcontainer'
-import HomeScrollers from './HomeScrollers'
+import ScrollersContainer from './ScrollersContainer'
+
 
 export default function Home() {
   return (
 <div>
        <CarrouselContainer />
-       <HomeScrollers /> 
+       <ScrollersContainer /> 
     </div>
   )
 }

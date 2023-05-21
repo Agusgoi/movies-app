@@ -6,7 +6,7 @@ import axios from 'axios';
 import { MoviesContext } from '../context/MoviesContext';
 
 
-export default function HomeScrollers() {
+export default function ScrollersContainer() {
  
   return (
     <Grid sx={{backgroundColor: 'primary.dark'}}

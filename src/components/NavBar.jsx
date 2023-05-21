@@ -58,11 +58,13 @@ export default function NavBar() {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
+          <Link to={'/search'}>
+            <Tooltip>
               <IconButton>
                 <SearchIcon />
               </IconButton>
             </Tooltip>
+            </Link>
           </Box>
         </Toolbar>
       </Container>

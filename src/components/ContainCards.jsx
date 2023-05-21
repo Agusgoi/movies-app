@@ -1,35 +1,33 @@
 import { React, useEffect, useState } from "react";
 import { Grid } from "@mui/material";
 import { useParams } from "react-router-dom";
-import MovieCard from "./MovieCard";
+
 import axios from "axios";
 import { useContext } from "react";
 import { MoviesContext } from "../context/MoviesContext";
+import MovieDetailContainer from "./MovieDetailContainer";
 
 export default function ContainCards() {
   const { nameCategory } = useParams();
-  const [categ, setCateg] = useState("");
   const [movies, setMovies] = useState([]);
 
-  console.log(categ);
-  console.log(nameCategory);
+  //console.log(nameCategory);
   const publicKey = "ce9e33ba2c3d3c490df6ef51c4e40050";
 
   useEffect(() => {
+    let category = "";
     if (nameCategory === "Ultimos Lanzamientos") {
-      let category = "upcoming";
-      setCateg(category);
+      category = "upcoming";
     } else {
-      let category = "popular";
-      setCateg(category);
+      category = "popular";
     }
 
     axios(
-      `https://api.themoviedb.org/3/movie/${categ}?api_key=${publicKey}&language=en-US&page=1`
+      `https://api.themoviedb.org/3/movie/${category}?api_key=${publicKey}&language=en-US&page=1`
     )
       .then((info) => {
         let moviesArray = info.data.results;
-        console.log(moviesArray)
+        console.log(moviesArray);
         setMovies(moviesArray);
         console.log(movies);
       })
@@ -47,7 +45,7 @@ export default function ContainCards() {
       {movies &&
         movies.map((movie) => (
           <Grid item key={movie.id}>
-            <MovieCard
+            <MovieDetailContainer
               key={movie.id}
               title={movie.original_title}
               img={movie.poster_path}

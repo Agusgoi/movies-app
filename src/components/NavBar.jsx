@@ -7,21 +7,20 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
-import AdbIcon from "@mui/icons-material/Adb";
 import SearchIcon from "@mui/icons-material/Search";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { MoviesContext } from "../context/MoviesContext";
 
-const pages = ["Ultimos Lanzamientos", "Populares"];
+const pages = ["Up-Coming", "Popular"];
 
 export default function NavBar() {
+  const { mainDarkColor, whiteColor, orangeColor } = useContext(MoviesContext);
 
   return (
-    <AppBar position="static">
+    <AppBar position="fixed" sx={{ backgroundColor: mainDarkColor }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
           <Typography
             variant="h6"
             noWrap
@@ -29,41 +28,53 @@ export default function NavBar() {
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
+              fontFamily: "bebas neue",
               fontWeight: 700,
               letterSpacing: ".3rem",
-              color: "inherit",
+              color: orangeColor,
               textDecoration: "none",
+              fontSize:'30px'
             }}
           >
             MOVIES
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            <Link to={'/'}>
-            <Button sx={{ my: 2, color: "white", display: "block" }}>
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" }, gap:5 }}>
+            <Button
+              sx={{
+                my: 2,
+                color: whiteColor,
+                display: "block",
+                fontFamily: "montserrat ",
+              }}
+              href="/"
+            >
               Home
-            </Button >
-            </Link>
+            </Button>
+
             {pages.map((page) => (
-              <Link key={page} to={`/category/${page}`}>
-                <Button
-                  key={page}
-                  sx={{ my: 2, color: "white", display: "block" }}
-                >
-                  {page}
-                </Button>
-              </Link>
+              <Button
+                key={page}
+                sx={{
+                  my: 2,
+                  color: whiteColor,
+                  display: "block",
+                  fontFamily: "montserrat ",
+                }}
+                href={`/category/${page}`}
+              >
+                {page}
+              </Button>
             ))}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-          <Link to={'/search'}>
-            <Tooltip>
-              <IconButton>
-                <SearchIcon />
-              </IconButton>
-            </Tooltip>
+            <Link to={"/search"}>
+              <Tooltip>
+                <IconButton sx={{ color: whiteColor }}>
+                  <SearchIcon />
+                </IconButton>
+              </Tooltip>
             </Link>
           </Box>
         </Toolbar>

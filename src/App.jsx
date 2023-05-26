@@ -7,6 +7,7 @@ import ContainCards from "./components/ContainCards";
 import MovieDetail from "./components/MovieDetail";
 import MoviesContextProvider from "./context/MoviesContext";
 import SearchContainer from "./components/SearchContainer";
+import TrailerContainer from "./components/TrailerContainer";
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
           <Route path="/detail/:id" element={<MovieDetail />} />
           <Route path="/category/:nameCategory" element={<ContainCards />} />
           <Route path="/search" element={<SearchContainer />} />
+          <Route path="/trailer/:id" element={<TrailerContainer />} />
         </Routes>
         <Footer />
       </MoviesContextProvider>

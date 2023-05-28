@@ -9,11 +9,12 @@ import { MoviesContext } from "../context/MoviesContext";
 import MovieCard from "./MovieCard";
 
 export default function ContainCards() {
+  const publicKey = import.meta.env.VITE_APP_API_KEY;
   const { nameCategory } = useParams();
   const [movies, setMovies] = useState([]);
   const {secondaryDarkColor} = useContext(MoviesContext)
 
-  const publicKey = "ce9e33ba2c3d3c490df6ef51c4e40050";
+  
 
   useEffect(() => {
     let category = "";

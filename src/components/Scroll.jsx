@@ -16,8 +16,7 @@ import { useContext } from "react";
 import { MoviesContext } from "../context/MoviesContext";
 
 export default function Scroll({ title, category }) {
-  
-  const publicKey = "ce9e33ba2c3d3c490df6ef51c4e40050";
+    const publicKey = import.meta.env.VITE_APP_API_KEY;
   const [movies, setMovies] = useState([]);
   const {mainDarkColor, whiteColor, orangeColor} = useContext(MoviesContext)
 

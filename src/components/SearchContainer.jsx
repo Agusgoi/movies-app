@@ -10,11 +10,9 @@ import { MoviesContext } from "../context/MoviesContext";
 import MovieCard from "./MovieCard";
 
 export default function SearchContainer() {
-  const publicKey = "ce9e33ba2c3d3c490df6ef51c4e40050";
+  const publicKey = import.meta.env.VITE_APP_API_KEY;
   const [moviesSearched, setMoviesSearched] = useState([]);
-  const {secondaryDarkColor} = useContext(MoviesContext)
-
-
+  const { secondaryDarkColor } = useContext(MoviesContext);
 
   const change = (inputSearch) => {
     console.log(inputSearch);
@@ -31,7 +29,7 @@ export default function SearchContainer() {
 
   return (
     <>
-      <Box sx={{ backgroundColor: secondaryDarkColor, padding: "100px 100px"}}>
+      <Box sx={{ backgroundColor: secondaryDarkColor, padding: "100px 100px" }}>
         <SearchInput onChange={change} />
       </Box>
       <Grid
@@ -41,7 +39,7 @@ export default function SearchContainer() {
         spacing={5}
         padding="0px 50px 50px 50px"
         direction="row"
-        minHeight='58vh'
+        minHeight="58vh"
       >
         {moviesSearched &&
           moviesSearched.map((movie) => (

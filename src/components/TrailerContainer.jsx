@@ -7,8 +7,8 @@ import ReactPlayer from "react-player/youtube";
 import { useState } from "react";
 
 export default function TrailerContainer() {
+  const publicKey = import.meta.env.VITE_APP_API_KEY;
   const { id } = useParams();
-  const publicKey = "ce9e33ba2c3d3c490df6ef51c4e40050";
 
   const [trailerList, setTrailerList] = useState({ results: [] });
 
@@ -26,13 +26,13 @@ export default function TrailerContainer() {
 
   trailerList.results.map((video) => {
     if (video.name.includes("Trailer")) {
-      videosMap.push(video.key)
-    }else if (video.name.includes("trailer")){
-      videosMap.push(video.key)
+      videosMap.push(video.key);
+    } else if (video.name.includes("trailer")) {
+      videosMap.push(video.key);
     }
   });
 
-  console.log(videosMap)
+  console.log(videosMap);
 
   useEffect(() => {
     axios(
@@ -41,7 +41,6 @@ export default function TrailerContainer() {
       .then((info) => {
         let allData = info.data;
         setTrailerList(allData);
-      
       })
 
       .catch((error) => console.log(error));

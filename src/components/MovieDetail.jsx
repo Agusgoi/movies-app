@@ -3,18 +3,16 @@ import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import Typography from "@mui/material/Typography";
 import { useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { Button, CardActions, CardContent, CardMedia } from "@mui/material";
-
 import axios from "axios";
 import { useContext } from "react";
 import { MoviesContext } from "../context/MoviesContext";
-
-import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 
 export default function MovieDetail() {
+  const publicKey = import.meta.env.VITE_APP_API_KEY;
   const [movie, setMovie] = useState({
     genres: [],
     production_countries: [],
@@ -22,10 +20,6 @@ export default function MovieDetail() {
   });
   const { id } = useParams();
   const { whiteColor, orangeColor } = useContext(MoviesContext);
-
-  const publicKey = "ce9e33ba2c3d3c490df6ef51c4e40050";
-  // console.log(id);
-  console.log(movie);
 
   let genresMap = [];
   let countryMap = [];
@@ -49,7 +43,7 @@ export default function MovieDetail() {
       .then((info) => {
         let movieSelected = info.data;
         setMovie(movieSelected);
-       console.log(movie)
+        console.log(movie);
       })
 
       .catch((error) => console.log(error));
@@ -97,7 +91,7 @@ export default function MovieDetail() {
               fontWeight="bold"
               fontSize="30px"
               paddingBottom="15px"
-              letterSpacing= ".2rem"
+              letterSpacing=".2rem"
             >
               {movie.title}
             </Typography>
@@ -136,13 +130,16 @@ export default function MovieDetail() {
               Spoken Languages: {languagesMap.join(" / ")}
             </Typography>
           </CardContent>
-          
+
           <CardActions sx={{ alignItems: "baseline" }}>
-            <Button endIcon={<PlayArrowIcon />} color="warning" href={`/trailer/${id}`}>
+            <Button
+              endIcon={<PlayArrowIcon />}
+              color="warning"
+              href={`/trailer/${id}`}
+            >
               Trailer
             </Button>
           </CardActions>
-         
         </Box>
       </Card>
     </Box>

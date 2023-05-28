@@ -1,18 +1,17 @@
-import { Box, Stack, Grid } from '@mui/material'
-import React, { useContext, useEffect } from 'react'
+import {  Grid } from '@mui/material'
 import Scroll from './Scroll'
-
-import axios from 'axios';
-import { MoviesContext } from '../context/MoviesContext';
-
+import { useContext } from 'react'
+import { MoviesContext } from '../context/MoviesContext'
 
 export default function ScrollersContainer() {
  
+  const {mainDarkColor} = useContext(MoviesContext)
+
   return (
-    <Grid sx={{backgroundColor: 'primary.dark'}}
-    container columns={2} justifyContent='center'gap={5}>
-       <Scroll title={'Most Popular'} category={'popular'}/>
-       <Scroll title={'Top Rated'} category={'top_rated'}/>
+    <Grid sx={{backgroundColor: mainDarkColor}}
+    container columns={2} justifyContent='center'gap={0}>
+       <Scroll title={'POPULAR Movies'} category={'popular'}/>
+       <Scroll title={'TOP-RATED Movies'} category={'top_rated'}/>
     </Grid>
     )}
 

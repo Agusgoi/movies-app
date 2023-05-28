@@ -5,15 +5,16 @@ import Scroll from "./Scroll";
 import axios from "axios";
 import SearchInput from "./SearchInput";
 import { useState } from "react";
-import MovieDetailContainer from "./MovieDetailContainer";
+
+import { MoviesContext } from "../context/MoviesContext";
+import MovieCard from "./MovieCard";
 
 export default function SearchContainer() {
   const publicKey = "ce9e33ba2c3d3c490df6ef51c4e40050";
   const [moviesSearched, setMoviesSearched] = useState([]);
+  const {secondaryDarkColor} = useContext(MoviesContext)
 
-  /*  const inputChange = (e) => {
-    setInputSearch(e.target.value);
-  }; */
+
 
   const change = (inputSearch) => {
     console.log(inputSearch);
@@ -22,7 +23,6 @@ export default function SearchContainer() {
     )
       .then((info) => {
         let moviesArray = info.data.results;
-        console.log(moviesArray);
         setMoviesSearched(moviesArray);
       })
 
@@ -31,21 +31,22 @@ export default function SearchContainer() {
 
   return (
     <>
-      <Box sx={{ backgroundColor: "yellow", padding: "30px 20px" }}>
+      <Box sx={{ backgroundColor: secondaryDarkColor, padding: "100px 100px"}}>
         <SearchInput onChange={change} />
       </Box>
       <Grid
-        sx={{ backgroundColor: "primary.dark" }}
+        sx={{ backgroundColor: secondaryDarkColor }}
         container
         justifyContent="center"
         spacing={5}
-        padding="50px"
+        padding="0px 50px 50px 50px"
         direction="row"
+        minHeight='58vh'
       >
         {moviesSearched &&
           moviesSearched.map((movie) => (
             <Grid item key={movie.id}>
-              <MovieDetailContainer
+              <MovieCard
                 key={movie.id}
                 title={movie.original_title}
                 img={movie.poster_path}

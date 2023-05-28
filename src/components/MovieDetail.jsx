@@ -3,36 +3,44 @@ import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import Typography from "@mui/material/Typography";
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useState } from "react";
-import { Button, CardActions, CardContent } from "@mui/material";
+import { Button, CardActions, CardContent, CardMedia } from "@mui/material";
+
+import axios from "axios";
 import { useContext } from "react";
 import { MoviesContext } from "../context/MoviesContext";
-import axios from "axios";
+
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+
 
 export default function MovieDetail() {
-  // https://api.themoviedb.org/3/movie/{movie_id}?api_key=<<api_key>>&language=en-US
-
-  const [movie, setMovie] = useState({});
+  const [movie, setMovie] = useState({
+    genres: [],
+    production_countries: [],
+    spoken_languages: [],
+  });
   const { id } = useParams();
-  //const {movies, setMovies} = useContext(MoviesContext)
+  const { whiteColor, orangeColor } = useContext(MoviesContext);
+
   const publicKey = "ce9e33ba2c3d3c490df6ef51c4e40050";
- // console.log(id);
+  // console.log(id);
+  console.log(movie);
 
-  let genres = movie.genres;
+  let genresMap = [];
+  let countryMap = [];
+  let languagesMap = [];
 
-  let array = [
-    {id: 18, name: 'Drama'},
+  movie.genres.map((genre) => {
+    genresMap.push(genre.name);
+  });
 
-    {id: 80, name: 'Crime'}
-  ] 
- // console.log(array[0].name);
-
-/*   for (let i = 0; i < array.length; i++) {
-    console.log(array[i].name);
-  } */
-  //console.log(genres.length);
-
+  movie.production_countries.map((country) => {
+    countryMap.push(country.name);
+  });
+  movie.spoken_languages.map((language) => {
+    languagesMap.push(language.english_name);
+  });
 
   useEffect(() => {
     axios(
@@ -41,13 +49,7 @@ export default function MovieDetail() {
       .then((info) => {
         let movieSelected = info.data;
         setMovie(movieSelected);
-console.log(movie)
-        //console.log(genres.length);
-
-
-        /* for (let i = 0; i < genres.length; i++) {
-          console.log(genres[i]);
-        } */
+       console.log(movie)
       })
 
       .catch((error) => console.log(error));
@@ -56,37 +58,93 @@ console.log(movie)
   return (
     <Box
       sx={{
-        height: "85vh",
+        height: "100vh",
         display: "flex",
         flexDirection: "column",
-        justifyContent: "flex-end",
         backgroundImage: `url('https://image.tmdb.org/t/p/w500/${movie.backdrop_path}')`,
         backgroundRepeat: "no-repeat",
-    backgroundPosition: "center center",
-    backgroundSize: "cover",
-
+        backgroundPosition: "center center",
+        backgroundSize: "cover",
+        justifyContent: "center",
+        alignContent: "center",
       }}
-
     >
-
-<Card sx={{ width: "100wh", height: "25%", backgroundColor: "black", opacity:'70%', paddingRight:'50px', display: 'flex' }}>
-        <CardContent sx= {{padding:' 20px 30px'}}>
-          {/* <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          {movie.title}
-        </Typography> */}
-          <Typography variant="h5" component="div" color="white">
-            {movie.title}
-          </Typography>
-            <Typography sx={{ mb: 1.5 }} color="white">
-          Genre:
-        </Typography> 
-          <Typography variant="body2" color="white" fontSize='10px'>{movie.overview}  </Typography>
-        </CardContent>
-        <CardActions sx={{alignItems: 'baseline',padding:'20px 0px'}}>
-          <Button size="small">VER</Button>
-        </CardActions>
+      <Card
+        sx={{
+          margin: "80px 150px 0px 150px",
+          height: "60%",
+          backgroundColor: "black",
+          opacity: "90%",
+          padding: "30px",
+          display: "flex",
+          justifyContent: "center",
+          alignContent: "center",
+        }}
+      >
+        <CardMedia
+          component="img"
+          sx={{ height: "100%", width: "400px" }}
+          image={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+          alt=""
+        />
+        <Box sx={{ display: "flex", flexDirection: "column" }}>
+          <CardContent>
+            <Typography
+              variant="h5"
+              component="div"
+              color={orangeColor}
+              fontFamily="bebas neue"
+              fontWeight="bold"
+              fontSize="30px"
+              paddingBottom="15px"
+              letterSpacing= ".2rem"
+            >
+              {movie.title}
+            </Typography>
+            <Typography
+              color={whiteColor}
+              fontFamily="montserrat"
+              fontSize="12px"
+              paddingBottom="20px"
+            >
+              {genresMap.join(" / ")}
+            </Typography>
+            <Typography
+              variant="body2"
+              color={whiteColor}
+              fontFamily="montserrat"
+              fontSize="14px"
+              paddingBottom="20px"
+            >
+              {movie.overview}
+            </Typography>
+            <Typography
+              variant="body2"
+              color={whiteColor}
+              fontFamily="montserrat"
+              fontSize="12px"
+              paddingBottom="8px"
+            >
+              Production Country: {countryMap.join(" / ")}
+            </Typography>
+            <Typography
+              variant="body2"
+              color={whiteColor}
+              fontFamily="montserrat"
+              fontSize="12px"
+            >
+              Spoken Languages: {languagesMap.join(" / ")}
+            </Typography>
+          </CardContent>
+          
+          <CardActions sx={{ alignItems: "baseline" }}>
+            <Button endIcon={<PlayArrowIcon />} color="warning" href={`/trailer/${id}`}>
+              Trailer
+            </Button>
+          </CardActions>
+         
+        </Box>
       </Card>
-      
     </Box>
   );
 }

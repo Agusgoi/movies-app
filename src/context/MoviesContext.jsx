@@ -1,15 +1,18 @@
-import { createContext, useState } from "react";
+import { createContext } from "react";
 
 export const MoviesContext = createContext();
 
 const MoviesContextProvider = ({ children }) => {
-  const [movies, setMovies] = useState([]);
-  const publicKey = "ce9e33ba2c3d3c490df6ef51c4e40050";
+  const mainDarkColor = "#212121";
+  const secondaryDarkColor = "#263238";
+  const whiteColor = "#f5f5f5";
+  const orangeColor = "#ff6d00";
 
   const data = {
-    publicKey,
-    movies,
-    setMovies,
+    mainDarkColor,
+    secondaryDarkColor,
+    whiteColor,
+    orangeColor,
   };
 
   return (
@@ -18,3 +21,7 @@ const MoviesContextProvider = ({ children }) => {
 };
 
 export default MoviesContextProvider;
+
+//.env api key
+//paginado
+//mejorar cards

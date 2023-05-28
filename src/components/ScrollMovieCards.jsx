@@ -5,7 +5,7 @@ import InfoIcon from "@mui/icons-material/Info";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { MoviesContext } from "../context/MoviesContext";
-import { WrapText } from "@mui/icons-material";
+
 import { Box } from "@mui/material";
 
 export default function ScrollMovieCards({ id, title, img }) {
@@ -28,11 +28,11 @@ export default function ScrollMovieCards({ id, title, img }) {
           sx={{
             whiteSpace: "normal",
             backgroundColor: secondaryDarkColor,
-            width: "170px",
+            width: "160px",
             height: "30px",
             textDecoration: "none",
             color: whiteColor,
-            padding: "0px",
+            padding: "5px",
             textAlign: "center",
             fontFamily: "montserrat",
             border: 1,

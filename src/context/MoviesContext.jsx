@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext } from "react";
 
 export const MoviesContext = createContext();
 
@@ -24,5 +24,4 @@ export default MoviesContextProvider;
 
 //.env api key
 //paginado
-//meter algo en el context
 //mejorar cards

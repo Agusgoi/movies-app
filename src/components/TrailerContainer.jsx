@@ -67,7 +67,7 @@ export default function TrailerContainer() {
           url={`https://www.youtube.com/watch?v=${videosMap}`}
           sx={{ height: "500px" }}
         />
-        <Button sx={{ alignItems: "baseline" }} href={`/detail/${id}`}></Button>
+        <Button sx={{ alignItems: "baseline" }} href={`/detail/${id}`}>Close</Button>
       </Card>
     </Container>
   );

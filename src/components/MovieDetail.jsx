@@ -126,6 +126,15 @@ export default function MovieDetail() {
               color={whiteColor}
               fontFamily="montserrat"
               fontSize="12px"
+              paddingBottom="8px"
+            >
+              Original Language: {movie.original_language}
+            </Typography>
+            <Typography
+              variant="body2"
+              color={whiteColor}
+              fontFamily="montserrat"
+              fontSize="12px"
             >
               Spoken Languages: {languagesMap.join(" / ")}
             </Typography>

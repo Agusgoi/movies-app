@@ -5,13 +5,8 @@ import Box from "@mui/material/Box";
 import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
-
 import ScrollMovieCards from "./ScrollMovieCards";
 import ImageListItem from "@mui/material/ImageListItem";
-import ImageListItemBar from "@mui/material/ImageListItemBar";
-import IconButton from "@mui/material/IconButton";
-import InfoIcon from "@mui/icons-material/Info";
-import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { MoviesContext } from "../context/MoviesContext";
 

@@ -1,7 +1,4 @@
-import ImageListItem from "@mui/material/ImageListItem";
 import ImageListItemBar from "@mui/material/ImageListItemBar";
-import IconButton from "@mui/material/IconButton";
-import InfoIcon from "@mui/icons-material/Info";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { MoviesContext } from "../context/MoviesContext";
@@ -22,7 +19,7 @@ export default function ScrollMovieCards({ id, title, img }) {
         height="250px"
         width='170px'
       />
-     <Link to={`/detail/${id}`}sx={{textDecoration:'none'}}>
+     <Link to={`/detail/${id}`}underline="none" style={{ textDecoration: 'none' }}>
         <ImageListItemBar
           position="below"
           sx={{

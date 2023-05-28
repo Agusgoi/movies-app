@@ -22,6 +22,5 @@ const MoviesContextProvider = ({ children }) => {
 
 export default MoviesContextProvider;
 
-//.env api key
 //paginado
-//mejorar cards
+//loading

@@ -14,7 +14,7 @@ export default function ContainCards() {
   const [movies, setMovies] = useState([]);
   const {secondaryDarkColor} = useContext(MoviesContext)
 
-  
+  console.log(movies)
 
   useEffect(() => {
     let category = "";
@@ -52,6 +52,7 @@ export default function ContainCards() {
               title={movie.original_title}
               img={movie.poster_path}
               id={movie.id}
+              vote={movie.vote_average}
             />
           </Grid>
         ))}

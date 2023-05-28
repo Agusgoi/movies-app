@@ -93,16 +93,17 @@ export default function MovieDetail() {
               variant="h5"
               component="div"
               color={orangeColor}
-              fontFamily="monospace"
+              fontFamily="bebas neue"
               fontWeight="bold"
               fontSize="30px"
               paddingBottom="15px"
+              letterSpacing= ".2rem"
             >
               {movie.title}
             </Typography>
             <Typography
               color={whiteColor}
-              fontFamily="monospace"
+              fontFamily="montserrat"
               fontSize="12px"
               paddingBottom="20px"
             >
@@ -111,7 +112,7 @@ export default function MovieDetail() {
             <Typography
               variant="body2"
               color={whiteColor}
-              fontFamily="monospace"
+              fontFamily="montserrat"
               fontSize="14px"
               paddingBottom="20px"
             >
@@ -120,8 +121,8 @@ export default function MovieDetail() {
             <Typography
               variant="body2"
               color={whiteColor}
-              fontFamily="monospace"
-              fontSize="10px"
+              fontFamily="montserrat"
+              fontSize="12px"
               paddingBottom="8px"
             >
               Production Country: {countryMap.join(" / ")}
@@ -129,8 +130,8 @@ export default function MovieDetail() {
             <Typography
               variant="body2"
               color={whiteColor}
-              fontFamily="monospace"
-              fontSize="10px"
+              fontFamily="montserrat"
+              fontSize="12px"
             >
               Spoken Languages: {languagesMap.join(" / ")}
             </Typography>

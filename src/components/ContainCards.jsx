@@ -12,7 +12,7 @@ export default function ContainCards() {
   const { nameCategory } = useParams();
   const [movies, setMovies] = useState([]);
   const {secondaryDarkColor} = useContext(MoviesContext)
-  //console.log(nameCategory);
+
   const publicKey = "ce9e33ba2c3d3c490df6ef51c4e40050";
 
   useEffect(() => {

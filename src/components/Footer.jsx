@@ -16,6 +16,7 @@ export default function Footer() {
         bgcolor: mainDarkColor,
         display: "flex",
         flexDirection: "column",
+        
       }}
       bottom="0"
     >
@@ -26,6 +27,7 @@ export default function Footer() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          gap: 5
         }}
       >
         <Button
@@ -33,7 +35,7 @@ export default function Footer() {
             my: 2,
             color: whiteColor,
             display: "block",
-            fontFamily: "monospace",
+            fontFamily: "montserrat",
           }}
           href="/"
         >
@@ -44,7 +46,7 @@ export default function Footer() {
             my: 2,
             color: whiteColor,
             display: "block",
-            fontFamily: "monospace",
+            fontFamily: "montserrat",
           }}
           href="/category/up-coming"
         >
@@ -55,7 +57,7 @@ export default function Footer() {
             my: 2,
             color: whiteColor,
             display: "block",
-            fontFamily: "monospace",
+            fontFamily: "montserrat",
           }}
           href="/category/popular"
         >
@@ -66,7 +68,7 @@ export default function Footer() {
             my: 2,
             color: whiteColor,
             display: "block",
-            fontFamily: "monospace",
+            fontFamily: "montserrat",
           }}
           href="/search"
         >
@@ -78,7 +80,7 @@ export default function Footer() {
         sx={{
           textAlign: "center",
           fontSize: "10px",
-          fontFamily: "monospace",
+          fontFamily: "montserrat",
           color: whiteColor,
         }}
       >

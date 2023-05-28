@@ -1,7 +1,7 @@
 import ImageListItemBar from "@mui/material/ImageListItemBar";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import { MoviesContext } from "../context/MoviesContext";
+import { MoviesContext } from "../../context/MoviesContext";
 
 import { Box } from "@mui/material";
 

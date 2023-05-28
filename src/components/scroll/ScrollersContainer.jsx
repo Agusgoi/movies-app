@@ -1,7 +1,8 @@
 import {  Grid } from '@mui/material'
-import Scroll from './Scroll'
 import { useContext } from 'react'
-import { MoviesContext } from '../context/MoviesContext'
+import { MoviesContext } from '../../context/MoviesContext'
+import Scroll from './Scroll'
+
 
 export default function ScrollersContainer() {
  

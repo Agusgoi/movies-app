@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { MoviesContext } from '../context/MoviesContext';
 
 export default function MovieCard({ img,id, title, vote}) {
-  const { secondaryDarkColor, whiteColor, mainDarkColor } =
+  const {  whiteColor, mainDarkColor } =
   useContext(MoviesContext);
   return (
  

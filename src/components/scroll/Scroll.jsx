@@ -5,10 +5,10 @@ import Box from "@mui/material/Box";
 import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
-import ScrollMovieCards from "./ScrollMovieCards";
 import ImageListItem from "@mui/material/ImageListItem";
 import { useContext } from "react";
-import { MoviesContext } from "../context/MoviesContext";
+import { MoviesContext } from "../../context/MoviesContext";
+import ScrollMovieCards from "./ScrollMovieCards";
 
 export default function Scroll({ title, category }) {
     const publicKey = import.meta.env.VITE_APP_API_KEY;

@@ -1,5 +1,5 @@
 import { React, useEffect, useState } from "react";
-import { Grid, Pagination } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import { useParams } from "react-router-dom";
 
 import axios from "axios";
@@ -7,14 +7,24 @@ import { useContext } from "react";
 import { MoviesContext } from "../context/MoviesContext";
 
 import MovieCard from "./MovieCard";
+import Pages from "./Pages";
+import BarLoader from "react-spinners/BarLoader";
 
 export default function ContainCards() {
   const publicKey = import.meta.env.VITE_APP_API_KEY;
   const { nameCategory } = useParams();
   const [movies, setMovies] = useState([]);
-  const {secondaryDarkColor} = useContext(MoviesContext)
+  const { secondaryDarkColor, orangeColor } = useContext(MoviesContext);
+  const [page, setPage] = useState('1');
+  const [totalPages, setTotalPages] = useState();
+  let [loading, setLoading] = useState(true);
 
-  console.log(movies)
+  console.log(movies);
+  console.log(page)
+
+  const handleChange = (event, value) => {
+    setPage(value);
+  };
 
   useEffect(() => {
     let category = "";
@@ -25,24 +35,31 @@ export default function ContainCards() {
     }
 
     axios(
-      `https://api.themoviedb.org/3/movie/${category}?api_key=${publicKey}&language=en-US&page=1`
+      `https://api.themoviedb.org/3/movie/${category}?api_key=${publicKey}&language=en-US&page=${page}`
     )
       .then((info) => {
         let moviesArray = info.data.results;
-        console.log(moviesArray);
+        let allPages = info.data.total_pages
+        setTotalPages (allPages)
         setMovies(moviesArray);
         console.log(movies);
+        setLoading(false)
       })
-
+      
       .catch((error) => console.log(error));
   }, [nameCategory]);
 
   return (
+    <>
     <Grid
       container
       spacing={5}
       direction="row"
-      style={{ padding: "100px 50px", justifyContent: "center", backgroundColor: secondaryDarkColor }}
+      style={{
+        padding: "100px 50px",
+        justifyContent: "center",
+        backgroundColor: secondaryDarkColor,
+      }}
     >
       {movies &&
         movies.map((movie) => (
@@ -55,9 +72,23 @@ export default function ContainCards() {
               vote={movie.vote_average}
             />
           </Grid>
+          
         ))}
+        
 
-        <Pagination />
+      
     </Grid>
+    <Box sx={{backgroundColor:secondaryDarkColor, display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', gap:5}}>
+    <BarLoader
+        color={orangeColor}
+        height={10}
+        speedMultiplier={1}
+        width={200}
+        loading={loading}
+        
+      />
+    <Pages page={page} setPage={setPage} totalPages ={totalPages} />
+    </Box>
+    </>
   );
 }

@@ -1,11 +1,8 @@
-import { Box, Stack, Grid } from "@mui/material";
-import React, { useContext, useEffect } from "react";
-import Scroll from "./Scroll";
-
+import { Box, Grid } from "@mui/material";
+import React, { useContext } from "react";
 import axios from "axios";
 import SearchInput from "./SearchInput";
 import { useState } from "react";
-
 import { MoviesContext } from "../context/MoviesContext";
 import MovieCard from "./MovieCard";
 
@@ -21,6 +18,7 @@ export default function SearchContainer() {
     )
       .then((info) => {
         let moviesArray = info.data.results;
+        console.log(info)
         setMoviesSearched(moviesArray);
       })
 
@@ -49,6 +47,7 @@ export default function SearchContainer() {
                 title={movie.original_title}
                 img={movie.poster_path}
                 id={movie.id}
+                vote={movie.vote_average}
               />
             </Grid>
           ))}

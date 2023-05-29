@@ -54,6 +54,7 @@ export default function NavBar() {
             </Button>
 
             {pages.map((page) => (
+              <Link to={`/category/${page}`}>
               <Button
                 key={page}
                 sx={{
@@ -62,10 +63,11 @@ export default function NavBar() {
                   display: "block",
                   fontFamily: "montserrat ",
                 }}
-                href={`/category/${page}`}
+                
               >
                 {page}
               </Button>
+              </Link>
             ))}
           </Box>
 

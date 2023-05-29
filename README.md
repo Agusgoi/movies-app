@@ -15,3 +15,11 @@ https://developer.themoviedb.org/
 To run this project, you will need to add the following environment variables to your .env file
 
 `VITE_APP_API_KEY `
+
+## Technologies
+
+A list of technologies used within the project:
+* REACT: https://react.dev/
+* VITE: https://vitejs.dev/
+* MUI: https://mui.com/
+

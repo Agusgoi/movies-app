@@ -1,4 +1,3 @@
-import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -33,13 +32,15 @@ export default function NavBar() {
               letterSpacing: ".3rem",
               color: orangeColor,
               textDecoration: "none",
-              fontSize:'30px'
+              fontSize: "30px",
             }}
           >
             MOVIES
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" }, gap:5 }}>
+          <Box
+            sx={{ flexGrow: 1, display: { xs: "none", md: "flex" }, gap: 5 }}
+          >
             <Button
               sx={{
                 my: 2,

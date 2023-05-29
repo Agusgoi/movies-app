@@ -11,12 +11,11 @@ import { MoviesContext } from "../../context/MoviesContext";
 import ScrollMovieCards from "./ScrollMovieCards";
 
 export default function Scroll({ title, category }) {
-    const publicKey = import.meta.env.VITE_APP_API_KEY;
+  const publicKey = import.meta.env.VITE_APP_API_KEY;
   const [movies, setMovies] = useState([]);
-  const {mainDarkColor, whiteColor, orangeColor} = useContext(MoviesContext)
+  const { mainDarkColor, whiteColor, orangeColor } = useContext(MoviesContext);
 
   useEffect(() => {
-  
     axios(
       `https://api.themoviedb.org/3/movie/${category}?api_key=${publicKey}&language=en-US&page=1`
     )
@@ -29,29 +28,43 @@ export default function Scroll({ title, category }) {
   }, []);
 
   return (
-    <Box sx={{ width: "100%", overflowY: "none",backgroundColor: mainDarkColor }}>
-      <ListSubheader component="div"sx={{backgroundColor: mainDarkColor, color: whiteColor, height: '50px', fontFamily: "bebas neue", fontSize:'20px', letterSpacing: ".2rem", scrollbarColor:orangeColor}}>{title} </ListSubheader>
-      <ImageList sx={{ overflowX:"auto", display: "flex", flexDirection: "row"}} rowHeight={300} >
-      
-          {movies.map((movie) => {
-            return (
-              <ImageListItem sx={{ display: "flex", flexDirection: "column" }} key={movie.id}>
+    <Box
+      sx={{ width: "100%", overflowY: "none", backgroundColor: mainDarkColor }}
+    >
+      <ListSubheader
+        component="div"
+        sx={{
+          backgroundColor: mainDarkColor,
+          color: whiteColor,
+          height: "50px",
+          fontFamily: "bebas neue",
+          fontSize: "20px",
+          letterSpacing: ".2rem",
+          scrollbarColor: orangeColor,
+        }}
+      >
+        {title}{" "}
+      </ListSubheader>
+      <ImageList
+        sx={{ overflowX: "auto", display: "flex", flexDirection: "row" }}
+        rowHeight={300}
+      >
+        {movies.map((movie) => {
+          return (
+            <ImageListItem
+              sx={{ display: "flex", flexDirection: "column" }}
+              key={movie.id}
+            >
               <ScrollMovieCards
-                 
-                  key={movie.id}
-                  title={movie.title}
-                  img={movie.poster_path}
-                  id={movie.id}
-                />
-          </ImageListItem>
-            );
-          })}
-       
-      
-     
+                key={movie.id}
+                title={movie.title}
+                img={movie.poster_path}
+                id={movie.id}
+              />
+            </ImageListItem>
+          );
+        })}
       </ImageList>
-     
-       
     </Box>
   );
 }

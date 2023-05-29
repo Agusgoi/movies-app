@@ -14,7 +14,6 @@ export default function Footer() {
         bgcolor: mainDarkColor,
         display: "flex",
         flexDirection: "column",
-        
       }}
       bottom="0"
     >
@@ -25,7 +24,7 @@ export default function Footer() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          gap: 5
+          gap: 5,
         }}
       >
         <Button

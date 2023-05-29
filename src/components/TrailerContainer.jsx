@@ -2,25 +2,14 @@ import Container from "@mui/material/Container";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect } from "react";
-import { Button, Card, getTypographyUtilityClass } from "@mui/material";
+import { Button, Card } from "@mui/material";
 import ReactPlayer from "react-player/youtube";
 import { useState } from "react";
 
 export default function TrailerContainer() {
   const publicKey = import.meta.env.VITE_APP_API_KEY;
   const { id } = useParams();
-
   const [trailerList, setTrailerList] = useState({ results: [] });
-
-  console.log(id);
-
-  console.log(trailerList.results);
-
-  const video = trailerList.results.find((video) =>
-    video.name.includes("Trailer")
-  );
-
-  console.log(video);
 
   let videosMap = [];
 
@@ -31,8 +20,6 @@ export default function TrailerContainer() {
       videosMap.push(video.key);
     }
   });
-
-  console.log(videosMap);
 
   useEffect(() => {
     axios(
@@ -67,7 +54,9 @@ export default function TrailerContainer() {
           url={`https://www.youtube.com/watch?v=${videosMap}`}
           sx={{ height: "500px" }}
         />
-        <Button sx={{ alignItems: "baseline" }} href={`/detail/${id}`}>Close</Button>
+        <Button sx={{ alignItems: "baseline" }} href={`/detail/${id}`}>
+          Close
+        </Button>
       </Card>
     </Container>
   );

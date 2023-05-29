@@ -1,18 +1,16 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Box, Typography, Button, CardMedia } from "@mui/material";
+import { Box, Typography, Button } from "@mui/material";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { useContext } from "react";
 import { MoviesContext } from "../../context/MoviesContext";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 
-
 export default function CarouselMovies() {
   const publicKey = import.meta.env.VITE_APP_API_KEY;
   const [topRated, setTopRated] = useState([]);
   const { whiteColor } = useContext(MoviesContext);
- 
 
   useEffect(() => {
     axios(
@@ -20,7 +18,6 @@ export default function CarouselMovies() {
     ).then((info) => {
       let moviesArray = info.data.results;
       setTopRated(moviesArray);
-      console.log(topRated);
     });
   }, []);
 

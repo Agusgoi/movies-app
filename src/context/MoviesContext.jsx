@@ -11,7 +11,6 @@ const MoviesContextProvider = ({ children }) => {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState();
 
-
   const prevPage = () => {
     if (page > 1) {
       setPage(page - 1);
@@ -44,7 +43,7 @@ const MoviesContextProvider = ({ children }) => {
     page,
     setPage,
     totalPages,
-    setTotalPages
+    setTotalPages,
   };
 
   return (
@@ -54,4 +53,4 @@ const MoviesContextProvider = ({ children }) => {
 
 export default MoviesContextProvider;
 
-//readme
+

@@ -3,8 +3,8 @@ import React, { useContext } from "react";
 import axios from "axios";
 import SearchInput from "./SearchInput";
 import { useState } from "react";
-import { MoviesContext } from "../context/MoviesContext";
-import MovieCard from "./MovieCard";
+import { MoviesContext } from "../../context/MoviesContext";
+import MovieCard from "../MovieCard";
 
 export default function SearchContainer() {
   const publicKey = import.meta.env.VITE_APP_API_KEY;
@@ -12,7 +12,6 @@ export default function SearchContainer() {
   const { secondaryDarkColor } = useContext(MoviesContext);
 
   const change = (inputSearch) => {
-    console.log(inputSearch);
     axios(
       `https://api.themoviedb.org/3/search/movie?api_key=${publicKey}&language=es-US&query=${inputSearch}&page=1`
     )

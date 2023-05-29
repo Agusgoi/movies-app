@@ -1,4 +1,3 @@
-import * as React from "react";
 import NavBar from "./components/NavBar";
 import Home from "./components/Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -6,8 +5,8 @@ import Footer from "./components/Footer";
 import ContainCards from "./components/ContainCards";
 import MovieDetail from "./components/MovieDetail";
 import MoviesContextProvider from "./context/MoviesContext";
-import SearchContainer from "./components/SearchContainer";
 import TrailerContainer from "./components/TrailerContainer";
+import SearchContainer from "./components/search/SearchContainer";
 
 export default function App() {
   return (
@@ -26,5 +25,3 @@ export default function App() {
     </BrowserRouter>
   );
 }
-
-

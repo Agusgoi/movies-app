@@ -1,11 +1,9 @@
 import { React, useEffect, useState } from "react";
 import { Box, Grid } from "@mui/material";
 import { useParams } from "react-router-dom";
-
 import axios from "axios";
 import { useContext } from "react";
 import { MoviesContext } from "../context/MoviesContext";
-
 import MovieCard from "./MovieCard";
 import Pages from "./Pages";
 import BarLoader from "react-spinners/BarLoader";
@@ -14,9 +12,17 @@ export default function ContainCards() {
   const publicKey = import.meta.env.VITE_APP_API_KEY;
   const { nameCategory } = useParams();
   const [movies, setMovies] = useState([]);
-  const { secondaryDarkColor, orangeColor, prevPage, nextPage, initPage, lastPage, page, setTotalPages } = useContext(MoviesContext);
+  const {
+    secondaryDarkColor,
+    orangeColor,
+    prevPage,
+    nextPage,
+    initPage,
+    lastPage,
+    page,
+    setTotalPages,
+  } = useContext(MoviesContext);
   let [loading, setLoading] = useState(true);
-
 
   useEffect(() => {
     let category = "";
@@ -34,7 +40,6 @@ export default function ContainCards() {
         let allPages = info.data.total_pages;
         setTotalPages(allPages);
         setMovies(moviesArray);
-        console.log(movies);
         setLoading(false);
       })
 

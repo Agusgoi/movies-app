@@ -2,7 +2,7 @@ import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import Typography from "@mui/material/Typography";
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useState } from "react";
 import { Button, CardActions, CardContent, CardMedia } from "@mui/material";
 import axios from "axios";
@@ -139,13 +139,11 @@ export default function MovieDetail() {
           </CardContent>
 
           <CardActions sx={{ alignItems: "baseline" }}>
-            <Button
-              endIcon={<PlayArrowIcon />}
-              color="warning"
-              href={`/trailer/${id}`}
-            >
-              Trailer
-            </Button>
+            <Link to={`/trailer/${id}`}>
+              <Button endIcon={<PlayArrowIcon />} color="warning">
+                Trailer
+              </Button>
+            </Link>
           </CardActions>
         </Box>
       </Card>

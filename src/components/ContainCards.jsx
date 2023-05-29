@@ -14,30 +14,9 @@ export default function ContainCards() {
   const publicKey = import.meta.env.VITE_APP_API_KEY;
   const { nameCategory } = useParams();
   const [movies, setMovies] = useState([]);
-  const { secondaryDarkColor, orangeColor } = useContext(MoviesContext);
-  const [page, setPage] = useState(1);
-  const [totalPages, setTotalPages] = useState();
+  const { secondaryDarkColor, orangeColor, prevPage, nextPage, initPage, lastPage, page, setTotalPages } = useContext(MoviesContext);
   let [loading, setLoading] = useState(true);
 
-  const prevPage = () => {
-    if (page > 1) {
-      setPage(page - 1);
-    }
-  };
-
-  const nextPage = () => {
-    if (page < totalPages) {
-      setPage(page + 1);
-    }
-  };
-
-  const initPage = () => {
-    setPage(1);
-  };
-
-  const lastPage = () => {
-    setPage(totalPages);
-  };
 
   useEffect(() => {
     let category = "";

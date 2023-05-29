@@ -6,7 +6,6 @@ import { useState } from "react";
 import { MoviesContext } from "../context/MoviesContext";
 import MovieCard from "./MovieCard";
 
-
 export default function SearchContainer() {
   const publicKey = import.meta.env.VITE_APP_API_KEY;
   const [moviesSearched, setMoviesSearched] = useState([]);
@@ -19,7 +18,6 @@ export default function SearchContainer() {
     )
       .then((info) => {
         let moviesArray = info.data.results;
-        console.log(info)
         setMoviesSearched(moviesArray);
       })
 

@@ -1,29 +1,30 @@
 import * as React from 'react';
-import Pagination from '@mui/material/Pagination';
-import Stack from '@mui/material/Stack';
-import { Button, IconButton } from '@mui/material';
-import DeleteIcon from '@mui/icons-material/Delete';
+import { IconButton } from '@mui/material';
 import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
+import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 
 export default function Pages({setPrev, setNext, setInit, setLast}) {
   return (
     
 
 <div >
-<IconButton aria-label="delete" onClick={()=> setInit()}>
-  <eyboardDoubleArrowLeftIcon />
+<IconButton  onClick={()=> setInit()} color='warning'>
+  <KeyboardDoubleArrowLeftIcon />
 </IconButton>
-  <Button onClick={()=> setPrev()}>2</Button>
-  <Button onClick={()=> setNext()}>3</Button>
-  <Button onClick={()=> setLast()}>4</Button>
+<IconButton  onClick={()=> setPrev()} color='warning'>
+  <KeyboardArrowLeftIcon />
+</IconButton>
+<IconButton  onClick={()=> setNext()} color='warning'>
+  <KeyboardArrowRightIcon />
+</IconButton>
+<IconButton onClick={()=> setLast()} color='warning'>
+  <KeyboardDoubleArrowRightIcon />
+</IconButton>
  
 </div>
   );
 }
 
 
-{/* <Stack spacing={2}>
- 
- <Pagination count={5} color="warning"  />
- 
-</Stack> */}

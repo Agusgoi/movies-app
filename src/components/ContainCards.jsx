@@ -26,7 +26,7 @@ export default function ContainCards() {
 
   useEffect(() => {
     let category = "";
-    if (nameCategory === "Up-Coming") {
+    if (nameCategory === "upcoming") {
       category = "upcoming";
     } else {
       category = "popular";

@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { MoviesContext } from "../context/MoviesContext";
 
-const pages = ["Up-Coming", "Popular"];
+const pages = ["upcoming", "popular"];
 
 export default function NavBar() {
   const { mainDarkColor, whiteColor, orangeColor } = useContext(MoviesContext);

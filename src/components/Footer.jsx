@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import { Button, Typography } from "@mui/material";
 import { useContext } from "react";
 import { MoviesContext } from "../context/MoviesContext";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   const { mainDarkColor, whiteColor } = useContext(MoviesContext);
@@ -27,6 +28,20 @@ export default function Footer() {
           gap: 5,
         }}
       >
+        <Link to={"/"} underline="none" style={{ textDecoration: "none" }}>
+          <Button
+            sx={{
+              my: 2,
+              color: whiteColor,
+              display: "block",
+              fontFamily: "montserrat",
+            }}
+          
+          >
+            Home
+          </Button>
+        </Link>
+        <Link to={"/category/upcoming"} underline="none" style={{ textDecoration: "none" }}>
         <Button
           sx={{
             my: 2,
@@ -34,10 +49,12 @@ export default function Footer() {
             display: "block",
             fontFamily: "montserrat",
           }}
-          href="/"
+      
         >
-          Home
+          UpComing
         </Button>
+        </Link>
+        <Link to={"/category/popular"} underline="none" style={{ textDecoration: "none" }}>
         <Button
           sx={{
             my: 2,
@@ -45,21 +62,12 @@ export default function Footer() {
             display: "block",
             fontFamily: "montserrat",
           }}
-          href="/category/up-coming"
-        >
-          Up-Coming
-        </Button>
-        <Button
-          sx={{
-            my: 2,
-            color: whiteColor,
-            display: "block",
-            fontFamily: "montserrat",
-          }}
-          href="/category/popular"
+      
         >
           Popular
         </Button>
+        </Link>
+        <Link to={"/search"} underline="none" style={{ textDecoration: "none" }}>
         <Button
           sx={{
             my: 2,
@@ -67,10 +75,11 @@ export default function Footer() {
             display: "block",
             fontFamily: "montserrat",
           }}
-          href="/search"
+      
         >
           Search
         </Button>
+        </Link>
       </Box>
 
       <Typography

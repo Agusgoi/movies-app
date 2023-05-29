@@ -18,7 +18,9 @@ const MoviesContextProvider = ({ children }) => {
   };
 
   const nextPage = () => {
-    if (page < totalPages) {
+    if (totalPages === 500) {
+      setPage(500);
+    } else if (page < 500) {
       setPage(page + 1);
     }
   };
@@ -28,7 +30,11 @@ const MoviesContextProvider = ({ children }) => {
   };
 
   const lastPage = () => {
-    setPage(totalPages);
+    if (totalPages > 500) {
+      setPage(500);
+    } else {
+      setPage(totalPages);
+    }
   };
 
   const data = {
@@ -52,5 +58,3 @@ const MoviesContextProvider = ({ children }) => {
 };
 
 export default MoviesContextProvider;
-
-

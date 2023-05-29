@@ -54,19 +54,22 @@ export default function NavBar() {
             </Button>
 
             {pages.map((page) => (
-              <Link to={`/category/${page}`}>
-              <Button
-                key={page}
-                sx={{
-                  my: 2,
-                  color: whiteColor,
-                  display: "block",
-                  fontFamily: "montserrat ",
-                }}
-                
+              <Link
+                to={`/category/${page}`}
+                underline="none"
+                style={{ textDecoration: "none" }}
               >
-                {page}
-              </Button>
+                <Button
+                  key={page}
+                  sx={{
+                    my: 2,
+                    color: whiteColor,
+                    display: "block",
+                    fontFamily: "montserrat ",
+                  }}
+                >
+                  {page}
+                </Button>
               </Link>
             ))}
           </Box>

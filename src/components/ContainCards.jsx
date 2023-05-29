@@ -31,7 +31,7 @@ export default function ContainCards() {
     } else {
       category = "popular";
     }
-
+   
     axios(
       `https://api.themoviedb.org/3/movie/${category}?api_key=${publicKey}&language=en-US&page=${page}`
     )
@@ -43,7 +43,9 @@ export default function ContainCards() {
         setLoading(false);
       })
 
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log(error);
+      });
   }, [nameCategory, page]);
 
   return (

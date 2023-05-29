@@ -8,7 +8,7 @@ import { MoviesContext } from "../../context/MoviesContext";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 
 
-export default function CarouselCont() {
+export default function CarouselMovies() {
   const publicKey = import.meta.env.VITE_APP_API_KEY;
   const [topRated, setTopRated] = useState([]);
   const { whiteColor } = useContext(MoviesContext);

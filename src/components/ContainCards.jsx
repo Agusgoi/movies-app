@@ -15,15 +15,28 @@ export default function ContainCards() {
   const { nameCategory } = useParams();
   const [movies, setMovies] = useState([]);
   const { secondaryDarkColor, orangeColor } = useContext(MoviesContext);
-  const [page, setPage] = useState('1');
+  const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState();
   let [loading, setLoading] = useState(true);
 
-  console.log(movies);
-  console.log(page)
+  const prevPage = () => {
+    if (page > 1) {
+      setPage(page - 1);
+    }
+  };
 
-  const handleChange = (event, value) => {
-    setPage(value);
+  const nextPage = () => {
+    if (page < totalPages) {
+      setPage(page + 1);
+    }
+  };
+
+  const initPage = () => {
+    setPage(1);
+  };
+
+  const lastPage = () => {
+    setPage(totalPages);
   };
 
   useEffect(() => {
@@ -39,56 +52,65 @@ export default function ContainCards() {
     )
       .then((info) => {
         let moviesArray = info.data.results;
-        let allPages = info.data.total_pages
-        setTotalPages (allPages)
+        let allPages = info.data.total_pages;
+        setTotalPages(allPages);
         setMovies(moviesArray);
         console.log(movies);
-        setLoading(false)
+        setLoading(false);
       })
-      
+
       .catch((error) => console.log(error));
-  }, [nameCategory]);
+  }, [nameCategory, page]);
 
   return (
     <>
-    <Grid
-      container
-      spacing={5}
-      direction="row"
-      style={{
-        padding: "100px 50px",
-        justifyContent: "center",
-        backgroundColor: secondaryDarkColor,
-      }}
-    >
-      {movies &&
-        movies.map((movie) => (
-          <Grid item key={movie.id}>
-            <MovieCard
-              key={movie.id}
-              title={movie.original_title}
-              img={movie.poster_path}
-              id={movie.id}
-              vote={movie.vote_average}
-            />
-          </Grid>
-          
-        ))}
-        
-
-      
-    </Grid>
-    <Box sx={{backgroundColor:secondaryDarkColor, display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', gap:5}}>
-    <BarLoader
-        color={orangeColor}
-        height={10}
-        speedMultiplier={1}
-        width={200}
-        loading={loading}
-        
-      />
-    <Pages page={page} setPage={setPage} totalPages ={totalPages} />
-    </Box>
+      <Grid
+        container
+        spacing={5}
+        direction="row"
+        style={{
+          padding: "100px 50px",
+          justifyContent: "center",
+          backgroundColor: secondaryDarkColor,
+        }}
+      >
+        {movies &&
+          movies.map((movie) => (
+            <Grid item key={movie.id}>
+              <MovieCard
+                key={movie.id}
+                title={movie.original_title}
+                img={movie.poster_path}
+                id={movie.id}
+                vote={movie.vote_average}
+              />
+            </Grid>
+          ))}
+      </Grid>
+      <Box
+        sx={{
+          backgroundColor: secondaryDarkColor,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: 5,
+        }}
+      >
+        <BarLoader
+          color={orangeColor}
+          height={10}
+          speedMultiplier={1}
+          width={200}
+          loading={loading}
+        />
+        <Pages
+          setPrev={prevPage}
+          setNext={nextPage}
+          setInit={initPage}
+          setLast={lastPage}
+        />
+      </Box>
     </>
   );
 }

@@ -16,8 +16,8 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/detail/:id" element={<MovieDetail />} />
-          <Route path="category/:nameCategory" element={<ContainCards />} />
-          <Route path="search" element={<SearchContainer />} />
+          <Route path="/category/:nameCategory" element={<ContainCards />} />
+          <Route path="/search" element={<SearchContainer />} />
           <Route path="/trailer/:id" element={<TrailerContainer />} />
         </Routes>
         <Footer />

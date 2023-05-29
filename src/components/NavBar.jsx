@@ -62,7 +62,7 @@ export default function NavBar() {
                   display: "block",
                   fontFamily: "montserrat ",
                 }}
-                href={`category/${page}`}
+                href={`/category/${page}`}
               >
                 {page}
               </Button>
@@ -70,7 +70,7 @@ export default function NavBar() {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Link to={"search"}>
+            <Link to={"/search"}>
               <Tooltip>
                 <IconButton sx={{ color: whiteColor }}>
                   <SearchIcon />

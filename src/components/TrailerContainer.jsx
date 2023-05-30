@@ -1,5 +1,5 @@
 import Container from "@mui/material/Container";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect } from "react";
 import { Button, Card } from "@mui/material";
@@ -54,9 +54,12 @@ export default function TrailerContainer() {
           url={`https://www.youtube.com/watch?v=${videosMap}`}
           sx={{ height: "500px" }}
         />
-        <Button sx={{ alignItems: "baseline" }} href={`/detail/${id}`}>
+        <Link to={`/detail/${id}`}   underline="none"
+                style={{ textDecoration: "none" }}>
+        <Button sx={{ alignItems: "baseline" }} >
           Close
         </Button>
+        </Link>
       </Card>
     </Container>
   );

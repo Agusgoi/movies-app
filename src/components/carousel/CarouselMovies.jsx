@@ -6,6 +6,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { useContext } from "react";
 import { MoviesContext } from "../../context/MoviesContext";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+import { Link } from "react-router-dom";
 
 export default function CarouselMovies() {
   const publicKey = import.meta.env.VITE_APP_API_KEY;
@@ -80,14 +81,15 @@ export default function CarouselMovies() {
                 >
                   {movie.overview}
                 </Typography>
-
-                <Button
-                  endIcon={<PlayArrowIcon />}
-                  color="warning"
-                  href={`/detail/${movie.id}`}
+                <Link
+                  to={`/detail/${movie.id}`}
+                  underline="none"
+                  style={{ textDecoration: "none" }}
                 >
-                  More
-                </Button>
+                  <Button endIcon={<PlayArrowIcon />} color="warning">
+                    More
+                  </Button>
+                </Link>
               </Box>
             </Box>
           );

@@ -25,7 +25,7 @@ export default function CarouselMovies() {
   return (
     <Box>
       <Carousel
-        autoPlay
+        autoPlay={true}
         interval={4000}
         transitionTime={1000}
         infiniteLoop

@@ -13,6 +13,7 @@ export default function ScrollersContainer() {
       columns={2}
       justifyContent="center"
       gap={0}
+      width='100vw'
     >
       <Scroll title={"POPULAR Movies"} category={"popular"} />
       <Scroll title={"TOP-RATED Movies"} category={"top_rated"} />

@@ -41,7 +41,7 @@ export default function NavBar() {
           <Box
             sx={{ flexGrow: 1, display: { xs: "none", md: "flex" }, gap: 5 }}
           >
-            <Button
+            <Button 
               sx={{
                 my: 2,
                 color: whiteColor,

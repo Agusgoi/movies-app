@@ -11,7 +11,7 @@ export default function Footer() {
   return (
     <Box
       sx={{
-        width: "100%",
+        width: "100vw",
         bgcolor: mainDarkColor,
         display: "flex",
         flexDirection: "column",
